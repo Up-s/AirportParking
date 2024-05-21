@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "573311487048",
+    "project_id": "airportparking-1c5e2",
+    "storage_bucket": "airportparking-1c5e2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:573311487048:android:afa03ac6acc51d42449c7d",
+        "android_client_info": {
+          "package_name": "com.QEDStudio.airport_parking"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCfcbUlU0KDP7yAMQqRYLa9psZO0LFh04"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
