@@ -1,28 +1,40 @@
+import 'package:airport_parking/domain/model/app_config.dart';
+import 'package:airport_parking/domain/respository/firebase_api_repository.dart';
+import 'package:airport_parking/domain/use_case/get_app_config_use_case.dart';
+import 'package:airport_parking/presentation/splash/splash_app_config_event.dart';
+import 'package:airport_parking/util/result.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  test('앱 버전 확인', () {
-    String currentVersion = "1.2.0";
-    const minVersion = "1.0.0";
-    const latestVersion = "1.6.0";
+  test('앱 버전 확인', () async {
+    final repository = FakeFirebaseApiRepository();
+    final appConfigUseCase = GetAppConfigUseCase(repository);
 
-    expect((isVersionLessThan(currentVersion, minVersion)), false);
+    String currentVersion = '0.0.9';
+    SplashAppConfigEvent event = await appConfigUseCase(currentVersion);
+    expect(event == const SplashAppConfigEvent.update(), true);
 
+    currentVersion = '1.2.0';
+    event = await appConfigUseCase(currentVersion);
+    expect(event == const SplashAppConfigEvent.later(), true);
+
+    currentVersion = '1.6.0';
+    event = await appConfigUseCase(currentVersion);
+    expect(event == const SplashAppConfigEvent.pass(), true);
   });
 }
 
-// v1 이 v2 보다 낮은가
-bool isVersionLessThan(String v1, String v2) {
-  List<String> v1Parts = v1.split('.');
-  List<String> v2Parts = v2.split('.');
+// 임시데이터
+class FakeFirebaseApiRepository extends FirebaseApiRepository {
+  @override
+  Future<Result<AppConfig>> call() async {
+    Future.delayed(const Duration(milliseconds: 500));
 
-  for (int i = 0; i < v1Parts.length; i++) {
-    int v1Part = int.parse(v1Parts[i]);
-    int v2Part = int.parse(v2Parts[i]);
-
-    if (v1Part < v2Part) return true;
-    if (v1Part > v2Part) return false;
+    final result = AppConfig(
+      latestVersion: "1.6.0",
+      minVersion: "1.0.0",
+      isOpen: true,
+    );
+    return Result.success(result);
   }
-
-  return false;
 }

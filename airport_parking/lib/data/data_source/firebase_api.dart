@@ -8,7 +8,7 @@ class FirebaseApi {
   final _config = 'config';
   final _configId = 'qr4azrlv6E3fNgu0QaJi';
 
-  Future<Result<AppConfig>> fetchConfig() async {
+  Future<Result<AppConfig>> call() async {
     try {
       final result = await _store
           .collection(_config)
