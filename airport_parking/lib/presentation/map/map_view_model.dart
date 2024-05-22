@@ -6,13 +6,17 @@ import 'package:airport_parking/presentation/map/map_event.dart';
 import 'package:flutter/cupertino.dart';
 
 class MapViewModel with ChangeNotifier {
-  final MapChangePageUseCase changePageUseCase;
+  final MapChangePageUseCase useCase;
 
   final _eventController = StreamController<MapEvent>.broadcast();
 
   Stream<MapEvent> get eventStream => _eventController.stream;
 
-  MapViewModel(this.changePageUseCase);
+  List<Airport> airportList = [];
+
+  MapViewModel(this.useCase) {
+    airportList = useCase.data.airportList;
+  }
 
   void onEvent(MapEvent event) {
     event.when(
@@ -22,7 +26,7 @@ class MapViewModel with ChangeNotifier {
   }
 
   Future<void> changePage(int index) async {
-    changePageUseCase(index);
+    airportList = useCase(airportList, index);
     notifyListeners();
   }
 

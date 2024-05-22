@@ -4,7 +4,7 @@ import 'package:airport_parking/domain/respository/firebase_api_repository.dart'
 import 'package:airport_parking/util/result.dart';
 
 class FirebaseApiRepositoryImpl implements FirebaseApiRepository {
-  FirebaseApi api;
+  final FirebaseApi api;
 
   FirebaseApiRepositoryImpl(this.api);
 

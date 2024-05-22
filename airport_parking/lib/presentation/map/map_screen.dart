@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:collection';
 
 import 'package:airport_parking/data/data_source/airport_data.dart';
+import 'package:airport_parking/presentation/airport/airport_screen.dart';
 import 'package:airport_parking/presentation/map/components/map_airport_item.dart';
 import 'package:airport_parking/presentation/map/components/map_animate_item.dart';
 import 'package:airport_parking/presentation/map/map_event.dart';
@@ -33,7 +34,12 @@ class _MapScreenState extends State<MapScreen> {
         event.when(
           changePage: (_) {},
           selectAirport: (airport) {
-            print(airport);
+            Navigator.push(
+              context,
+              CupertinoPageRoute(
+                builder: (context) => AirportScreen(airport: airport),
+              ),
+            );
           },
         );
       });
@@ -50,7 +56,6 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     final viewModel = context.watch<MapViewModel>();
-    final airportList = viewModel.changePageUseCase.data.airportList;
 
     return CupertinoPageScaffold(
       backgroundColor: CupertinoColors.black,
@@ -70,18 +75,18 @@ class _MapScreenState extends State<MapScreen> {
                     'assets/map/map_base.png',
                     fit: BoxFit.fill,
                   ),
-                  ...List.generate(airportList.length, (index) {
-                    return MapAnimateItem(airport: airportList[index]);
+                  ...List.generate(viewModel.airportList.length, (index) {
+                    return MapAnimateItem(airport: viewModel.airportList[index]);
                   }),
                 ]),
               ),
             ),
             SizedBox(
-              height: 88,
               width: double.infinity,
+              height: 88,
               child: PageView.builder(
                 controller: _pageController,
-                itemCount: airportList.length,
+                itemCount: viewModel.airportList.length,
                 onPageChanged: (int index) {
                   viewModel.onEvent(MapEvent.changePage(index));
                 },
@@ -91,10 +96,10 @@ class _MapScreenState extends State<MapScreen> {
                     child: GestureDetector(
                       onTap: () {
                         viewModel.onEvent(
-                            MapEvent.selectAirport(airportList[index]));
+                            MapEvent.selectAirport(viewModel.airportList[index]));
                       },
                       child: MapAirportItem(
-                        airport: airportList[index],
+                        airport: viewModel.airportList[index],
                       ),
                     ),
                   );

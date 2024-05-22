@@ -22,6 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Future.microtask(() {
       final viewModel = context.read<SplashViewModel>();
+
       _streamSubscription = viewModel.eventStream.listen((event) {
         event.when(
           isOpen: () {
@@ -82,8 +83,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.watch<SplashViewModel>();
-
     return CupertinoPageScaffold(
       backgroundColor: CupertinoColors.black,
       child: SafeArea(
