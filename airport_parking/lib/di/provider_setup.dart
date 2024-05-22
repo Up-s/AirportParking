@@ -3,11 +3,11 @@
 import 'package:airport_parking/data/data_source/airport_data.dart';
 import 'package:airport_parking/data/data_source/firebase_api.dart';
 import 'package:airport_parking/data/data_source/open_api.dart';
-import 'package:airport_parking/data/repository/firebase_api_repository_impl.dart';
+import 'package:airport_parking/data/repository/firebase_repository_impl.dart';
 import 'package:airport_parking/data/repository/open_api_repository_impl.dart';
-import 'package:airport_parking/domain/respository/firebase_api_repository.dart';
+import 'package:airport_parking/domain/respository/firebase_repository.dart';
 import 'package:airport_parking/domain/respository/open_api_repository.dart';
-import 'package:airport_parking/domain/use_case/get_app_config_use_case.dart';
+import 'package:airport_parking/domain/use_case/get_config_use_case.dart';
 import 'package:airport_parking/domain/use_case/get_open_api_use_case.dart';
 import 'package:airport_parking/domain/use_case/map_change_page_use_case.dart';
 import 'package:airport_parking/domain/use_case/post_store_use_case.dart';
@@ -41,11 +41,11 @@ List<SingleChildWidget> independentModels = [
 
 // 3. 2번에 의존성 있는 객체
 List<SingleChildWidget> dependentModels = [
-  ProxyProvider<FirebaseApi, FirebaseApiRepository>(
-    update: (context, api, _) => FirebaseApiRepositoryImpl(api),
+  ProxyProvider<FirebaseApi, FirebaseRepository>(
+    update: (context, api, _) => FirebaseRepositoryImpl(api),
   ),
-  ProxyProvider<FirebaseApiRepository, GetAppConfigUseCase>(
-    update: (context, repository, _) => GetAppConfigUseCase(repository),
+  ProxyProvider<FirebaseRepository, GetConfigUseCase>(
+    update: (context, repository, _) => GetConfigUseCase(repository),
   ),
   ProxyProvider<AirportData, MapChangePageUseCase>(
     update: (context, data, _) => MapChangePageUseCase(data),
@@ -59,7 +59,7 @@ List<SingleChildWidget> dependentModels = [
   ProxyProvider<OpenApiRepository, GetOpenApiUseCase>(
     update: (context, repository, _) => GetOpenApiUseCase(repository),
   ),
-  ProxyProvider<FirebaseApiRepository, PostStoreUseCase>(
+  ProxyProvider<FirebaseRepository, PostStoreUseCase>(
     update: (context, repository, _) => PostStoreUseCase(repository),
   ),
 ];
@@ -67,7 +67,7 @@ List<SingleChildWidget> dependentModels = [
 // 4. ViewModels
 List<SingleChildWidget> viewModels = [
   ChangeNotifierProvider<SplashViewModel>(
-    create: (context) => SplashViewModel(context.read<GetAppConfigUseCase>()),
+    create: (context) => SplashViewModel(context.read<GetConfigUseCase>()),
   ),
   ChangeNotifierProvider<MapViewModel>(
     create: (context) => MapViewModel(context.read<MapChangePageUseCase>()),

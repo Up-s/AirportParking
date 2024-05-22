@@ -1,34 +1,34 @@
-import 'package:airport_parking/domain/respository/firebase_api_repository.dart';
-import 'package:airport_parking/presentation/splash/splash_app_config_event.dart';
+import 'package:airport_parking/domain/respository/firebase_repository.dart';
+import 'package:airport_parking/presentation/splash/splash_event.dart';
 
-class GetAppConfigUseCase {
-  final FirebaseApiRepository repository;
+class GetConfigUseCase {
+  final FirebaseRepository repository;
 
-  GetAppConfigUseCase(this.repository);
+  GetConfigUseCase(this.repository);
 
-  Future<SplashAppConfigEvent> call(String currentVersion) async {
+  Future<SplashEvent> call(String currentVersion) async {
     final result = await repository.fetchConfig();
 
     return result.when(
       success: (config) {
         if (config.isOpen == false) {
           // 서버 정지
-          return const SplashAppConfigEvent.isOpen();
+          return const SplashEvent.isOpen();
         }
 
         if (_isVersionLessThan(currentVersion, config.minVersion)) {
           // 강제 업데이트
-          return const SplashAppConfigEvent.update();
+          return const SplashEvent.update();
         } else if (_isVersionLessThan(currentVersion, config.latestVersion)) {
           // 선택 업데이트
-          return const SplashAppConfigEvent.later();
+          return const SplashEvent.later();
         } else {
           // 최신 버전
-          return const SplashAppConfigEvent.pass();
+          return const SplashEvent.pass();
         }
       },
       error: (message) {
-        return SplashAppConfigEvent.error(message);
+        return SplashEvent.error(message);
       },
     );
   }

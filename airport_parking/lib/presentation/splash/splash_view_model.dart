@@ -1,23 +1,23 @@
 import 'dart:async';
 
-import 'package:airport_parking/domain/use_case/get_app_config_use_case.dart';
-import 'package:airport_parking/presentation/splash/splash_app_config_event.dart';
+import 'package:airport_parking/domain/use_case/get_config_use_case.dart';
+import 'package:airport_parking/presentation/splash/splash_event.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class SplashViewModel with ChangeNotifier {
-  final GetAppConfigUseCase useCase;
+  final GetConfigUseCase useCase;
 
-  final _eventController = StreamController<SplashAppConfigEvent>.broadcast();
+  final _eventController = StreamController<SplashEvent>.broadcast();
 
-  Stream<SplashAppConfigEvent> get eventStream => _eventController.stream;
+  Stream<SplashEvent> get eventStream => _eventController.stream;
 
 
   SplashViewModel(this.useCase) {
-    _fectchFirebaseConfig();
+    _fectchConfig();
   }
 
-  Future<void> _fectchFirebaseConfig() async {
+  Future<void> _fectchConfig() async {
     await Future.delayed(const Duration(milliseconds: 1500));
 
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
