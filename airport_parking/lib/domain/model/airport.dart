@@ -9,6 +9,10 @@ class Airport with _$Airport {
   factory Airport({
     required String en,
     required String ko,
+    required String homepage,
+    required String mapPath,
+    required String airportPath,
+    required double opacity,
   }) = _Airport;
 
   factory Airport.fromJson(Map<String, Object?> json) => _$AirportFromJson(json);

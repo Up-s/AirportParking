@@ -65,13 +65,6 @@ class _SplashScreenState extends State<SplashScreen> {
               CupertinoPageRoute(builder: (context) => const MapScreen()),
               (route) => false,
             );
-
-            // Navigator.push(
-            //   context,
-            //   CupertinoPageRoute(
-            //     builder: (context) => const MapScreen(),
-            //   ),
-            // );
           },
           error: (message) {
             _showAlertDialog(context, 'System Error', message, []);

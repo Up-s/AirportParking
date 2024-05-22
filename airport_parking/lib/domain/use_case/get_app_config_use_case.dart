@@ -16,10 +16,10 @@ class GetAppConfigUseCase {
           return const SplashAppConfigEvent.isOpen();
         }
 
-        if (isVersionLessThan(currentVersion, config.minVersion)) {
+        if (_isVersionLessThan(currentVersion, config.minVersion)) {
           // 강제 업데이트
           return const SplashAppConfigEvent.update();
-        } else if (isVersionLessThan(currentVersion, config.latestVersion)) {
+        } else if (_isVersionLessThan(currentVersion, config.latestVersion)) {
           // 선택 업데이트
           return const SplashAppConfigEvent.later();
         } else {
@@ -34,7 +34,7 @@ class GetAppConfigUseCase {
   }
 
   // v1 이 v2 보다 낮은가
-  bool isVersionLessThan(String v1, String v2) {
+  bool _isVersionLessThan(String v1, String v2) {
     List<String> v1Parts = v1.split('.');
     List<String> v2Parts = v2.split('.');
 
