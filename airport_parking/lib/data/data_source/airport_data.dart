@@ -1,0 +1,86 @@
+import 'package:airport_parking/domain/model/airport.dart';
+
+class AirportData {
+  List<Airport> airportList = [
+    Airport(
+      en: 'GMP',
+      ko: '김포국제공항',
+      homepage: 'https://www.airport.co.kr/gimpo/index.do',
+      mapPath: 'assets/map/map_00.png',
+      airportPath: 'assets/airport/airport_00.png',
+      opacity: 0,
+    ),
+    Airport(
+      en: 'PUS',
+      ko: '김해국제공항',
+      homepage: 'https://www.airport.co.kr/gimhae/index.do',
+      mapPath: 'assets/map/map_07.png',
+      airportPath: 'assets/airport/airport_08.png',
+      opacity: 0,
+    ),
+    Airport(
+      en: 'CJU',
+      ko: '제주국제공항',
+      homepage: 'https://www.airport.co.kr/jeju/index.do',
+      mapPath: 'assets/map/map_08.png',
+      airportPath: 'assets/airport/airport_07.png',
+      opacity: 0,
+    ),
+    Airport(
+      en: 'TAE',
+      ko: '대구국제공항',
+      homepage: 'https://www.airport.co.kr/daegu/index.do',
+      mapPath: 'assets/map/map_04.png',
+      airportPath: 'assets/airport/airport_04.png',
+      opacity: 0,
+    ),
+    Airport(
+      en: 'KWJ',
+      ko: '광주공항',
+      homepage: 'https://www.airport.co.kr/gwangju/index.do',
+      mapPath: 'assets/map/map_06.png',
+      airportPath: 'assets/airport/airport_05.png',
+      opacity: 0,
+    ),
+    Airport(
+      en: 'RSU',
+      ko: '여수공항',
+      homepage: 'https://www.airport.co.kr/yeosu/index.do',
+      mapPath: 'assets/map/map_06.png',
+      airportPath: 'assets/airport/airport_06.png',
+      opacity: 0,
+    ),
+    Airport(
+      en: 'USN',
+      ko: '울산공항',
+      homepage: 'https://www.airport.co.kr/ulsan/index.do',
+      mapPath: 'assets/map/map_07.png',
+      airportPath: 'assets/airport/airport_09.png',
+      opacity: 0,
+    ),
+    Airport(
+      en: 'KUV',
+      ko: '군산공항',
+      homepage: 'https://www.airport.co.kr/gunsan/index.do',
+      mapPath: 'assets/map/map_05.png',
+      airportPath: 'assets/airport/airport_03.png',
+      opacity: 0,
+    ),
+    Airport(
+      en: 'WJU',
+      ko: '원주공항',
+      homepage: 'https://www.airport.co.kr/wonju/index.do',
+      mapPath: 'assets/map/map_01.png',
+      airportPath: 'assets/airport/airport_01.png',
+      opacity: 0,
+    ),
+    Airport(
+      en: 'CJJ',
+      ko: '청주국제공항',
+      homepage: 'https://www.airport.co.kr/cheongju/index.do',
+      mapPath: 'assets/map/map_03.png',
+      airportPath: 'assets/airport/airport_02.png',
+      opacity: 0,
+    ),
+  ];
+}

@@ -22,6 +22,10 @@ Airport _$AirportFromJson(Map<String, dynamic> json) {
 mixin _$Airport {
   String get en => throw _privateConstructorUsedError;
   String get ko => throw _privateConstructorUsedError;
+  String get homepage => throw _privateConstructorUsedError;
+  String get mapPath => throw _privateConstructorUsedError;
+  String get airportPath => throw _privateConstructorUsedError;
+  double get opacity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -33,7 +37,13 @@ abstract class $AirportCopyWith<$Res> {
   factory $AirportCopyWith(Airport value, $Res Function(Airport) then) =
       _$AirportCopyWithImpl<$Res, Airport>;
   @useResult
-  $Res call({String en, String ko});
+  $Res call(
+      {String en,
+      String ko,
+      String homepage,
+      String mapPath,
+      String airportPath,
+      double opacity});
 }
 
 /// @nodoc
@@ -51,6 +61,10 @@ class _$AirportCopyWithImpl<$Res, $Val extends Airport>
   $Res call({
     Object? en = null,
     Object? ko = null,
+    Object? homepage = null,
+    Object? mapPath = null,
+    Object? airportPath = null,
+    Object? opacity = null,
   }) {
     return _then(_value.copyWith(
       en: null == en
@@ -61,6 +75,22 @@ class _$AirportCopyWithImpl<$Res, $Val extends Airport>
           ? _value.ko
           : ko // ignore: cast_nullable_to_non_nullable
               as String,
+      homepage: null == homepage
+          ? _value.homepage
+          : homepage // ignore: cast_nullable_to_non_nullable
+              as String,
+      mapPath: null == mapPath
+          ? _value.mapPath
+          : mapPath // ignore: cast_nullable_to_non_nullable
+              as String,
+      airportPath: null == airportPath
+          ? _value.airportPath
+          : airportPath // ignore: cast_nullable_to_non_nullable
+              as String,
+      opacity: null == opacity
+          ? _value.opacity
+          : opacity // ignore: cast_nullable_to_non_nullable
+              as double,
     ) as $Val);
   }
 }
@@ -72,7 +102,13 @@ abstract class _$$AirportImplCopyWith<$Res> implements $AirportCopyWith<$Res> {
       __$$AirportImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String en, String ko});
+  $Res call(
+      {String en,
+      String ko,
+      String homepage,
+      String mapPath,
+      String airportPath,
+      double opacity});
 }
 
 /// @nodoc
@@ -88,6 +124,10 @@ class __$$AirportImplCopyWithImpl<$Res>
   $Res call({
     Object? en = null,
     Object? ko = null,
+    Object? homepage = null,
+    Object? mapPath = null,
+    Object? airportPath = null,
+    Object? opacity = null,
   }) {
     return _then(_$AirportImpl(
       en: null == en
@@ -98,6 +138,22 @@ class __$$AirportImplCopyWithImpl<$Res>
           ? _value.ko
           : ko // ignore: cast_nullable_to_non_nullable
               as String,
+      homepage: null == homepage
+          ? _value.homepage
+          : homepage // ignore: cast_nullable_to_non_nullable
+              as String,
+      mapPath: null == mapPath
+          ? _value.mapPath
+          : mapPath // ignore: cast_nullable_to_non_nullable
+              as String,
+      airportPath: null == airportPath
+          ? _value.airportPath
+          : airportPath // ignore: cast_nullable_to_non_nullable
+              as String,
+      opacity: null == opacity
+          ? _value.opacity
+          : opacity // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -105,7 +161,13 @@ class __$$AirportImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$AirportImpl implements _Airport {
-  _$AirportImpl({required this.en, required this.ko});
+  _$AirportImpl(
+      {required this.en,
+      required this.ko,
+      required this.homepage,
+      required this.mapPath,
+      required this.airportPath,
+      required this.opacity});
 
   factory _$AirportImpl.fromJson(Map<String, dynamic> json) =>
       _$$AirportImplFromJson(json);
@@ -114,10 +176,18 @@ class _$AirportImpl implements _Airport {
   final String en;
   @override
   final String ko;
+  @override
+  final String homepage;
+  @override
+  final String mapPath;
+  @override
+  final String airportPath;
+  @override
+  final double opacity;
 
   @override
   String toString() {
-    return 'Airport(en: $en, ko: $ko)';
+    return 'Airport(en: $en, ko: $ko, homepage: $homepage, mapPath: $mapPath, airportPath: $airportPath, opacity: $opacity)';
   }
 
   @override
@@ -126,12 +196,19 @@ class _$AirportImpl implements _Airport {
         (other.runtimeType == runtimeType &&
             other is _$AirportImpl &&
             (identical(other.en, en) || other.en == en) &&
-            (identical(other.ko, ko) || other.ko == ko));
+            (identical(other.ko, ko) || other.ko == ko) &&
+            (identical(other.homepage, homepage) ||
+                other.homepage == homepage) &&
+            (identical(other.mapPath, mapPath) || other.mapPath == mapPath) &&
+            (identical(other.airportPath, airportPath) ||
+                other.airportPath == airportPath) &&
+            (identical(other.opacity, opacity) || other.opacity == opacity));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, en, ko);
+  int get hashCode =>
+      Object.hash(runtimeType, en, ko, homepage, mapPath, airportPath, opacity);
 
   @JsonKey(ignore: true)
   @override
@@ -148,8 +225,13 @@ class _$AirportImpl implements _Airport {
 }
 
 abstract class _Airport implements Airport {
-  factory _Airport({required final String en, required final String ko}) =
-      _$AirportImpl;
+  factory _Airport(
+      {required final String en,
+      required final String ko,
+      required final String homepage,
+      required final String mapPath,
+      required final String airportPath,
+      required final double opacity}) = _$AirportImpl;
 
   factory _Airport.fromJson(Map<String, dynamic> json) = _$AirportImpl.fromJson;
 
@@ -157,6 +239,14 @@ abstract class _Airport implements Airport {
   String get en;
   @override
   String get ko;
+  @override
+  String get homepage;
+  @override
+  String get mapPath;
+  @override
+  String get airportPath;
+  @override
+  double get opacity;
   @override
   @JsonKey(ignore: true)
   _$$AirportImplCopyWith<_$AirportImpl> get copyWith =>
