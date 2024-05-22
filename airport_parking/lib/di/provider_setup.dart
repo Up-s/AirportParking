@@ -10,7 +10,10 @@ import 'package:airport_parking/domain/respository/open_api_repository.dart';
 import 'package:airport_parking/domain/use_case/get_app_config_use_case.dart';
 import 'package:airport_parking/domain/use_case/get_open_api_use_case.dart';
 import 'package:airport_parking/domain/use_case/map_change_page_use_case.dart';
+import 'package:airport_parking/domain/use_case/post_store_use_case.dart';
 import 'package:airport_parking/presentation/airport/airport_view_model.dart';
+import 'package:airport_parking/presentation/edit_airport/edit_store_screen.dart';
+import 'package:airport_parking/presentation/edit_airport/edit_store_view_model.dart';
 import 'package:airport_parking/presentation/map/map_view_model.dart';
 import 'package:airport_parking/presentation/splash/splash_view_model.dart';
 import 'package:provider/provider.dart';
@@ -56,6 +59,9 @@ List<SingleChildWidget> dependentModels = [
   ProxyProvider<OpenApiRepository, GetOpenApiUseCase>(
     update: (context, repository, _) => GetOpenApiUseCase(repository),
   ),
+  ProxyProvider<FirebaseApiRepository, PostStoreUseCase>(
+    update: (context, repository, _) => PostStoreUseCase(repository),
+  ),
 ];
 
 // 4. ViewModels
@@ -68,5 +74,8 @@ List<SingleChildWidget> viewModels = [
   ),
   ChangeNotifierProvider<AirportViewModel>(
     create: (context) => AirportViewModel(context.read<GetOpenApiUseCase>()),
+  ),
+  ChangeNotifierProvider<EditStoreViewModel>(
+    create: (context) => EditStoreViewModel(context.read<PostStoreUseCase>()),
   ),
 ];

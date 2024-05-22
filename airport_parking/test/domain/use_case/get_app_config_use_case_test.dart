@@ -1,4 +1,5 @@
 import 'package:airport_parking/domain/model/app_config.dart';
+import 'package:airport_parking/domain/model/store.dart';
 import 'package:airport_parking/domain/respository/firebase_api_repository.dart';
 import 'package:airport_parking/domain/use_case/get_app_config_use_case.dart';
 import 'package:airport_parking/presentation/splash/splash_app_config_event.dart';
@@ -27,7 +28,7 @@ void main() {
 // 임시데이터
 class FakeFirebaseApiRepository extends FirebaseApiRepository {
   @override
-  Future<Result<AppConfig>> call() async {
+  Future<Result<AppConfig>> fetchConfig() async {
     Future.delayed(const Duration(milliseconds: 500));
 
     final result = AppConfig(
@@ -36,5 +37,11 @@ class FakeFirebaseApiRepository extends FirebaseApiRepository {
       isOpen: true,
     );
     return Result.success(result);
+  }
+
+  @override
+  Future<Result<void>> updateStore(Store store) {
+    // TODO: implement updateStore
+    throw UnimplementedError();
   }
 }

@@ -7,7 +7,7 @@ class GetAppConfigUseCase {
   GetAppConfigUseCase(this.repository);
 
   Future<SplashAppConfigEvent> call(String currentVersion) async {
-    final result = await repository();
+    final result = await repository.fetchConfig();
 
     return result.when(
       success: (config) {

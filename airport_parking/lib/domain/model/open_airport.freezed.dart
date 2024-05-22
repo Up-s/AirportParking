@@ -22,12 +22,13 @@ OpenAirport _$OpenAirportFromJson(Map<String, dynamic> json) {
 mixin _$OpenAirport {
   String get aprEng => throw _privateConstructorUsedError;
   String get aprKor => throw _privateConstructorUsedError;
-  String get parkingAirportCodeName => throw _privateConstructorUsedError;
-  int get parkingFullSpace => throw _privateConstructorUsedError;
-  String get parkingGetdate => throw _privateConstructorUsedError;
-  String get parkingGettime => throw _privateConstructorUsedError;
-  int get parkingIincnt => throw _privateConstructorUsedError;
-  int get parkingIoutcnt => throw _privateConstructorUsedError;
+  String get parkingAirportCodeName =>
+      throw _privateConstructorUsedError; // 주차장 이름
+  int get parkingFullSpace => throw _privateConstructorUsedError; // 전체 주차면 수
+  String get parkingGetdate => throw _privateConstructorUsedError; // 업데이트 일자
+  String get parkingGettime => throw _privateConstructorUsedError; // 업데이트 시간
+  int get parkingIincnt => throw _privateConstructorUsedError; // 입고된 차량 수
+  int get parkingIoutcnt => throw _privateConstructorUsedError; // 출고된 차량 수
   int get parkingIstay => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -223,16 +224,22 @@ class _$OpenAirportImpl implements _OpenAirport {
   final String aprKor;
   @override
   final String parkingAirportCodeName;
+// 주차장 이름
   @override
   final int parkingFullSpace;
+// 전체 주차면 수
   @override
   final String parkingGetdate;
+// 업데이트 일자
   @override
   final String parkingGettime;
+// 업데이트 시간
   @override
   final int parkingIincnt;
+// 입고된 차량 수
   @override
   final int parkingIoutcnt;
+// 출고된 차량 수
   @override
   final int parkingIstay;
 
@@ -313,17 +320,17 @@ abstract class _OpenAirport implements OpenAirport {
   String get aprKor;
   @override
   String get parkingAirportCodeName;
-  @override
+  @override // 주차장 이름
   int get parkingFullSpace;
-  @override
+  @override // 전체 주차면 수
   String get parkingGetdate;
-  @override
+  @override // 업데이트 일자
   String get parkingGettime;
-  @override
+  @override // 업데이트 시간
   int get parkingIincnt;
-  @override
+  @override // 입고된 차량 수
   int get parkingIoutcnt;
-  @override
+  @override // 출고된 차량 수
   int get parkingIstay;
   @override
   @JsonKey(ignore: true)

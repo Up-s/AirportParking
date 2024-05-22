@@ -102,9 +102,12 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 
-  // This shows a CupertinoModalPopup which hosts a CupertinoAlertDialog.
-  void _showAlertDialog(BuildContext context, String title, String content,
-      List<CupertinoDialogAction> actions) {
+  void _showAlertDialog(
+    BuildContext context,
+    String title,
+    String content,
+    List<CupertinoDialogAction> actions,
+  ) {
     showCupertinoModalPopup<void>(
       context: context,
       builder: (BuildContext context) => CupertinoAlertDialog(

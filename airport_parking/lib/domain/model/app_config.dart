@@ -16,7 +16,7 @@ class AppConfig with _$AppConfig {
   factory AppConfig.fromJson(Map<String, Object?> json) =>
       _$AppConfigFromJson(json);
 
-  factory AppConfig.formDocment(DocumentSnapshot snapshot) {
+  factory AppConfig.formDocument(DocumentSnapshot snapshot) {
     final data = snapshot.data() as Map<String, dynamic>;
     final String latestVersion = data['latest_version'];
     final String minVersion = data['min_version'];

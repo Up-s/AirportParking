@@ -1,5 +1,6 @@
 import 'package:airport_parking/di/provider_setup.dart';
 import 'package:airport_parking/firebase_options.dart';
+import 'package:airport_parking/presentation/edit_airport/edit_store_screen.dart';
 import 'package:airport_parking/presentation/splash/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const CupertinoApp(
+      // home: EditStoreScreen(),
       home: SplashScreen(),
     );
   }
