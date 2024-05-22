@@ -15,13 +15,13 @@ class MapAirportItem extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: InColors.main,
+        color: InColors.gray900,
       ),
       child: Center(
         child: Text(
           airport.ko,
-          style: const TextStyle(
-            color: Colors.black,
+          style: TextStyle(
+            color: InColors.main,
             fontSize: 34.0,
             fontWeight: FontWeight.bold,
           ),

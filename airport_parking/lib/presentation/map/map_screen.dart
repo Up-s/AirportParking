@@ -107,7 +107,7 @@ class _MapScreenState extends State<MapScreen> {
               ),
             ),
             const SizedBox(
-              height: 48,
+              height: 88,
             ),
           ],
         ),

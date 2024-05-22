@@ -64,6 +64,7 @@ class _AirportScreenState extends State<AirportScreen> {
       child: SafeArea(
         child: Column(
           children: [
+            const SizedBox(height: 24),
             SizedBox(
               width: double.infinity,
               height: 280,
