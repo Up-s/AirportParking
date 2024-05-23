@@ -4,9 +4,11 @@ import 'package:airport_parking/domain/model/airport.dart';
 import 'package:airport_parking/presentation/airport/airport_event.dart';
 import 'package:airport_parking/presentation/airport/airport_view_model.dart';
 import 'package:airport_parking/presentation/airport/components/airport_item.dart';
+import 'package:airport_parking/presentation/airport/components/store_item.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AirportScreen extends StatefulWidget {
   final Airport airport;
@@ -32,13 +34,71 @@ class _AirportScreenState extends State<AirportScreen> {
     Future.microtask(() {
       final viewModel = context.read<AirportViewModel>();
 
-      viewModel.onEvent(AirportEvent.apiFetch(widget.airport.en));
+      viewModel.load(widget.airport);
 
       _streamSubscription = viewModel.eventStream.listen((event) {
         event.when(
-          apiFetch: (_) {},
-          apiSuccess: () {},
-          apiError: (error) {},
+          storeTap: (store) {
+            showCupertinoModalPopup<void>(
+              context: context,
+              builder: (BuildContext context) {
+                return CupertinoActionSheet(
+                  title: Text(
+                    store.title,
+                    style: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: CupertinoColors.systemBackground,
+                    ),
+                  ),
+                  actions: <CupertinoActionSheetAction>[
+                    CupertinoActionSheetAction(
+                      isDefaultAction: true,
+                      onPressed: () {
+                        Navigator.pop(context);
+                        _makePhoneCall(store.phone);
+                      },
+                      child: const Text('전화걸기'),
+                    ),
+                    CupertinoActionSheetAction(
+                      isDefaultAction: true,
+                      onPressed: () {
+                        Navigator.pop(context);
+                        _openWebsite(store.website);
+                      },
+                      child: const Text('홈페이지'),
+                    ),
+                  ],
+                  cancelButton: CupertinoActionSheetAction(
+                    isDefaultAction: true,
+                    isDestructiveAction: true,
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text('닫기'),
+                  ),
+                );
+              },
+            );
+          },
+          showAlert: (message) {
+            showCupertinoModalPopup<void>(
+              context: context,
+              builder: (BuildContext context) => CupertinoAlertDialog(
+                title: const Text('알림'),
+                content: Text(message),
+                actions: [
+                  CupertinoDialogAction(
+                    isDefaultAction: true,
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Text('확인'),
+                  ),
+                ],
+              ),
+            );
+          },
         );
       });
     });
@@ -58,7 +118,13 @@ class _AirportScreenState extends State<AirportScreen> {
     return CupertinoPageScaffold(
       backgroundColor: CupertinoColors.black,
       navigationBar: CupertinoNavigationBar(
-        middle: Text(widget.airport.ko),
+        middle: Text(
+          widget.airport.ko,
+          style: TextStyle(
+            fontSize: 22,
+            color: CupertinoColors.white,
+          ),
+        ),
         backgroundColor: CupertinoColors.black,
       ),
       child: SafeArea(
@@ -89,9 +155,38 @@ class _AirportScreenState extends State<AirportScreen> {
                       },
                     ),
             ),
+            const SizedBox(height: 32),
+            Expanded(
+              child: ListView(
+                  children: viewModel.storeList.map((store) {
+                return GestureDetector(
+                  onTap: () {
+                    viewModel.onEvent(AirportEvent.storeTap(store));
+                  },
+                  child: StoreItem(store: store),
+                );
+              }).toList()),
+            )
           ],
         ),
       ),
     );
+  }
+
+  Future<void> _makePhoneCall(String phoneNumber) async {
+    final Uri launchUri = Uri(
+      scheme: 'tel',
+      path: phoneNumber,
+    );
+    if (await canLaunchUrl(launchUri)) {
+      await launchUrl(launchUri);
+    }
+  }
+
+  Future<void> _openWebsite(String url) async {
+    final Uri launchUri = Uri.parse(url);
+    if (await canLaunchUrl(launchUri)) {
+      await launchUrl(launchUri);
+    }
   }
 }

@@ -2,12 +2,12 @@ import 'package:airport_parking/domain/model/store.dart';
 import 'package:airport_parking/domain/repository/firebase_repository.dart';
 import 'package:airport_parking/util/result.dart';
 
-class PostStoreUseCase {
+class GetStoreUseCase {
   final FirebaseRepository repository;
 
-  PostStoreUseCase(this.repository);
+  GetStoreUseCase(this.repository);
 
-  Future<Result<void>> call(Store store) async {
-    return await repository.updateStore(store);
+  Future<Result<List<Store>>> call(String path) async {
+    return await repository.fetchStore(path);
   }
 }

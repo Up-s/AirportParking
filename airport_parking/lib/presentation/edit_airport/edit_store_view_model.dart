@@ -12,7 +12,14 @@ class EditStoreViewModel with ChangeNotifier {
 
   Stream<EditStoreEvent> get eventStream => _eventController.stream;
 
-  EditStoreViewModel(this.useCase);
+  EditStoreViewModel(this.useCase) {
+    // updateStore(
+    //   'CJJ',
+    //   '센트럴파킹센터',
+    //   '1555-3315',
+    //   'https://centralparking.kr/',
+    // );
+  }
 
   Future<void> updateStore(
     String? path,

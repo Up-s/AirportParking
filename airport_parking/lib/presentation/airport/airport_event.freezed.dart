@@ -18,45 +18,39 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$AirportEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String query) apiFetch,
-    required TResult Function() apiSuccess,
-    required TResult Function(String e) apiError,
+    required TResult Function(Store store) storeTap,
+    required TResult Function(String message) showAlert,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String query)? apiFetch,
-    TResult? Function()? apiSuccess,
-    TResult? Function(String e)? apiError,
+    TResult? Function(Store store)? storeTap,
+    TResult? Function(String message)? showAlert,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query)? apiFetch,
-    TResult Function()? apiSuccess,
-    TResult Function(String e)? apiError,
+    TResult Function(Store store)? storeTap,
+    TResult Function(String message)? showAlert,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ApiFetch value) apiFetch,
-    required TResult Function(ApiSuccess value) apiSuccess,
-    required TResult Function(ApiError value) apiError,
+    required TResult Function(StoreTap value) storeTap,
+    required TResult Function(ShowAlert value) showAlert,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ApiFetch value)? apiFetch,
-    TResult? Function(ApiSuccess value)? apiSuccess,
-    TResult? Function(ApiError value)? apiError,
+    TResult? Function(StoreTap value)? storeTap,
+    TResult? Function(ShowAlert value)? showAlert,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ApiFetch value)? apiFetch,
-    TResult Function(ApiSuccess value)? apiSuccess,
-    TResult Function(ApiError value)? apiError,
+    TResult Function(StoreTap value)? storeTap,
+    TResult Function(ShowAlert value)? showAlert,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -81,96 +75,103 @@ class _$AirportEventCopyWithImpl<$Res, $Val extends AirportEvent>
 }
 
 /// @nodoc
-abstract class _$$ApiFetchImplCopyWith<$Res> {
-  factory _$$ApiFetchImplCopyWith(
-          _$ApiFetchImpl value, $Res Function(_$ApiFetchImpl) then) =
-      __$$ApiFetchImplCopyWithImpl<$Res>;
+abstract class _$$StoreTapImplCopyWith<$Res> {
+  factory _$$StoreTapImplCopyWith(
+          _$StoreTapImpl value, $Res Function(_$StoreTapImpl) then) =
+      __$$StoreTapImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String query});
+  $Res call({Store store});
+
+  $StoreCopyWith<$Res> get store;
 }
 
 /// @nodoc
-class __$$ApiFetchImplCopyWithImpl<$Res>
-    extends _$AirportEventCopyWithImpl<$Res, _$ApiFetchImpl>
-    implements _$$ApiFetchImplCopyWith<$Res> {
-  __$$ApiFetchImplCopyWithImpl(
-      _$ApiFetchImpl _value, $Res Function(_$ApiFetchImpl) _then)
+class __$$StoreTapImplCopyWithImpl<$Res>
+    extends _$AirportEventCopyWithImpl<$Res, _$StoreTapImpl>
+    implements _$$StoreTapImplCopyWith<$Res> {
+  __$$StoreTapImplCopyWithImpl(
+      _$StoreTapImpl _value, $Res Function(_$StoreTapImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? query = null,
+    Object? store = null,
   }) {
-    return _then(_$ApiFetchImpl(
-      null == query
-          ? _value.query
-          : query // ignore: cast_nullable_to_non_nullable
-              as String,
+    return _then(_$StoreTapImpl(
+      null == store
+          ? _value.store
+          : store // ignore: cast_nullable_to_non_nullable
+              as Store,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $StoreCopyWith<$Res> get store {
+    return $StoreCopyWith<$Res>(_value.store, (value) {
+      return _then(_value.copyWith(store: value));
+    });
   }
 }
 
 /// @nodoc
 
-class _$ApiFetchImpl implements ApiFetch {
-  const _$ApiFetchImpl(this.query);
+class _$StoreTapImpl implements StoreTap {
+  const _$StoreTapImpl(this.store);
 
   @override
-  final String query;
+  final Store store;
 
   @override
   String toString() {
-    return 'AirportEvent.apiFetch(query: $query)';
+    return 'AirportEvent.storeTap(store: $store)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ApiFetchImpl &&
-            (identical(other.query, query) || other.query == query));
+            other is _$StoreTapImpl &&
+            (identical(other.store, store) || other.store == store));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, query);
+  int get hashCode => Object.hash(runtimeType, store);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ApiFetchImplCopyWith<_$ApiFetchImpl> get copyWith =>
-      __$$ApiFetchImplCopyWithImpl<_$ApiFetchImpl>(this, _$identity);
+  _$$StoreTapImplCopyWith<_$StoreTapImpl> get copyWith =>
+      __$$StoreTapImplCopyWithImpl<_$StoreTapImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String query) apiFetch,
-    required TResult Function() apiSuccess,
-    required TResult Function(String e) apiError,
+    required TResult Function(Store store) storeTap,
+    required TResult Function(String message) showAlert,
   }) {
-    return apiFetch(query);
+    return storeTap(store);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String query)? apiFetch,
-    TResult? Function()? apiSuccess,
-    TResult? Function(String e)? apiError,
+    TResult? Function(Store store)? storeTap,
+    TResult? Function(String message)? showAlert,
   }) {
-    return apiFetch?.call(query);
+    return storeTap?.call(store);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query)? apiFetch,
-    TResult Function()? apiSuccess,
-    TResult Function(String e)? apiError,
+    TResult Function(Store store)? storeTap,
+    TResult Function(String message)? showAlert,
     required TResult orElse(),
   }) {
-    if (apiFetch != null) {
-      return apiFetch(query);
+    if (storeTap != null) {
+      return storeTap(store);
     }
     return orElse();
   }
@@ -178,181 +179,70 @@ class _$ApiFetchImpl implements ApiFetch {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ApiFetch value) apiFetch,
-    required TResult Function(ApiSuccess value) apiSuccess,
-    required TResult Function(ApiError value) apiError,
+    required TResult Function(StoreTap value) storeTap,
+    required TResult Function(ShowAlert value) showAlert,
   }) {
-    return apiFetch(this);
+    return storeTap(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ApiFetch value)? apiFetch,
-    TResult? Function(ApiSuccess value)? apiSuccess,
-    TResult? Function(ApiError value)? apiError,
+    TResult? Function(StoreTap value)? storeTap,
+    TResult? Function(ShowAlert value)? showAlert,
   }) {
-    return apiFetch?.call(this);
+    return storeTap?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ApiFetch value)? apiFetch,
-    TResult Function(ApiSuccess value)? apiSuccess,
-    TResult Function(ApiError value)? apiError,
+    TResult Function(StoreTap value)? storeTap,
+    TResult Function(ShowAlert value)? showAlert,
     required TResult orElse(),
   }) {
-    if (apiFetch != null) {
-      return apiFetch(this);
+    if (storeTap != null) {
+      return storeTap(this);
     }
     return orElse();
   }
 }
 
-abstract class ApiFetch implements AirportEvent {
-  const factory ApiFetch(final String query) = _$ApiFetchImpl;
+abstract class StoreTap implements AirportEvent {
+  const factory StoreTap(final Store store) = _$StoreTapImpl;
 
-  String get query;
+  Store get store;
   @JsonKey(ignore: true)
-  _$$ApiFetchImplCopyWith<_$ApiFetchImpl> get copyWith =>
+  _$$StoreTapImplCopyWith<_$StoreTapImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$$ApiSuccessImplCopyWith<$Res> {
-  factory _$$ApiSuccessImplCopyWith(
-          _$ApiSuccessImpl value, $Res Function(_$ApiSuccessImpl) then) =
-      __$$ApiSuccessImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$ApiSuccessImplCopyWithImpl<$Res>
-    extends _$AirportEventCopyWithImpl<$Res, _$ApiSuccessImpl>
-    implements _$$ApiSuccessImplCopyWith<$Res> {
-  __$$ApiSuccessImplCopyWithImpl(
-      _$ApiSuccessImpl _value, $Res Function(_$ApiSuccessImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$ApiSuccessImpl implements ApiSuccess {
-  const _$ApiSuccessImpl();
-
-  @override
-  String toString() {
-    return 'AirportEvent.apiSuccess()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$ApiSuccessImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String query) apiFetch,
-    required TResult Function() apiSuccess,
-    required TResult Function(String e) apiError,
-  }) {
-    return apiSuccess();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String query)? apiFetch,
-    TResult? Function()? apiSuccess,
-    TResult? Function(String e)? apiError,
-  }) {
-    return apiSuccess?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query)? apiFetch,
-    TResult Function()? apiSuccess,
-    TResult Function(String e)? apiError,
-    required TResult orElse(),
-  }) {
-    if (apiSuccess != null) {
-      return apiSuccess();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(ApiFetch value) apiFetch,
-    required TResult Function(ApiSuccess value) apiSuccess,
-    required TResult Function(ApiError value) apiError,
-  }) {
-    return apiSuccess(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ApiFetch value)? apiFetch,
-    TResult? Function(ApiSuccess value)? apiSuccess,
-    TResult? Function(ApiError value)? apiError,
-  }) {
-    return apiSuccess?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(ApiFetch value)? apiFetch,
-    TResult Function(ApiSuccess value)? apiSuccess,
-    TResult Function(ApiError value)? apiError,
-    required TResult orElse(),
-  }) {
-    if (apiSuccess != null) {
-      return apiSuccess(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class ApiSuccess implements AirportEvent {
-  const factory ApiSuccess() = _$ApiSuccessImpl;
-}
-
-/// @nodoc
-abstract class _$$ApiErrorImplCopyWith<$Res> {
-  factory _$$ApiErrorImplCopyWith(
-          _$ApiErrorImpl value, $Res Function(_$ApiErrorImpl) then) =
-      __$$ApiErrorImplCopyWithImpl<$Res>;
+abstract class _$$ShowAlertImplCopyWith<$Res> {
+  factory _$$ShowAlertImplCopyWith(
+          _$ShowAlertImpl value, $Res Function(_$ShowAlertImpl) then) =
+      __$$ShowAlertImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({String e});
+  $Res call({String message});
 }
 
 /// @nodoc
-class __$$ApiErrorImplCopyWithImpl<$Res>
-    extends _$AirportEventCopyWithImpl<$Res, _$ApiErrorImpl>
-    implements _$$ApiErrorImplCopyWith<$Res> {
-  __$$ApiErrorImplCopyWithImpl(
-      _$ApiErrorImpl _value, $Res Function(_$ApiErrorImpl) _then)
+class __$$ShowAlertImplCopyWithImpl<$Res>
+    extends _$AirportEventCopyWithImpl<$Res, _$ShowAlertImpl>
+    implements _$$ShowAlertImplCopyWith<$Res> {
+  __$$ShowAlertImplCopyWithImpl(
+      _$ShowAlertImpl _value, $Res Function(_$ShowAlertImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? e = null,
+    Object? message = null,
   }) {
-    return _then(_$ApiErrorImpl(
-      null == e
-          ? _value.e
-          : e // ignore: cast_nullable_to_non_nullable
+    return _then(_$ShowAlertImpl(
+      null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -360,64 +250,61 @@ class __$$ApiErrorImplCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$ApiErrorImpl implements ApiError {
-  const _$ApiErrorImpl(this.e);
+class _$ShowAlertImpl implements ShowAlert {
+  const _$ShowAlertImpl(this.message);
 
   @override
-  final String e;
+  final String message;
 
   @override
   String toString() {
-    return 'AirportEvent.apiError(e: $e)';
+    return 'AirportEvent.showAlert(message: $message)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$ApiErrorImpl &&
-            (identical(other.e, e) || other.e == e));
+            other is _$ShowAlertImpl &&
+            (identical(other.message, message) || other.message == message));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, e);
+  int get hashCode => Object.hash(runtimeType, message);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$ApiErrorImplCopyWith<_$ApiErrorImpl> get copyWith =>
-      __$$ApiErrorImplCopyWithImpl<_$ApiErrorImpl>(this, _$identity);
+  _$$ShowAlertImplCopyWith<_$ShowAlertImpl> get copyWith =>
+      __$$ShowAlertImplCopyWithImpl<_$ShowAlertImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String query) apiFetch,
-    required TResult Function() apiSuccess,
-    required TResult Function(String e) apiError,
+    required TResult Function(Store store) storeTap,
+    required TResult Function(String message) showAlert,
   }) {
-    return apiError(e);
+    return showAlert(message);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function(String query)? apiFetch,
-    TResult? Function()? apiSuccess,
-    TResult? Function(String e)? apiError,
+    TResult? Function(Store store)? storeTap,
+    TResult? Function(String message)? showAlert,
   }) {
-    return apiError?.call(e);
+    return showAlert?.call(message);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String query)? apiFetch,
-    TResult Function()? apiSuccess,
-    TResult Function(String e)? apiError,
+    TResult Function(Store store)? storeTap,
+    TResult Function(String message)? showAlert,
     required TResult orElse(),
   }) {
-    if (apiError != null) {
-      return apiError(e);
+    if (showAlert != null) {
+      return showAlert(message);
     }
     return orElse();
   }
@@ -425,43 +312,40 @@ class _$ApiErrorImpl implements ApiError {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(ApiFetch value) apiFetch,
-    required TResult Function(ApiSuccess value) apiSuccess,
-    required TResult Function(ApiError value) apiError,
+    required TResult Function(StoreTap value) storeTap,
+    required TResult Function(ShowAlert value) showAlert,
   }) {
-    return apiError(this);
+    return showAlert(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(ApiFetch value)? apiFetch,
-    TResult? Function(ApiSuccess value)? apiSuccess,
-    TResult? Function(ApiError value)? apiError,
+    TResult? Function(StoreTap value)? storeTap,
+    TResult? Function(ShowAlert value)? showAlert,
   }) {
-    return apiError?.call(this);
+    return showAlert?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(ApiFetch value)? apiFetch,
-    TResult Function(ApiSuccess value)? apiSuccess,
-    TResult Function(ApiError value)? apiError,
+    TResult Function(StoreTap value)? storeTap,
+    TResult Function(ShowAlert value)? showAlert,
     required TResult orElse(),
   }) {
-    if (apiError != null) {
-      return apiError(this);
+    if (showAlert != null) {
+      return showAlert(this);
     }
     return orElse();
   }
 }
 
-abstract class ApiError implements AirportEvent {
-  const factory ApiError(final String e) = _$ApiErrorImpl;
+abstract class ShowAlert implements AirportEvent {
+  const factory ShowAlert(final String message) = _$ShowAlertImpl;
 
-  String get e;
+  String get message;
   @JsonKey(ignore: true)
-  _$$ApiErrorImplCopyWith<_$ApiErrorImpl> get copyWith =>
+  _$$ShowAlertImplCopyWith<_$ShowAlertImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

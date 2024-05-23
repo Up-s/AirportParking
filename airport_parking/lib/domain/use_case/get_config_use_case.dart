@@ -1,4 +1,4 @@
-import 'package:airport_parking/domain/respository/firebase_repository.dart';
+import 'package:airport_parking/domain/repository/firebase_repository.dart';
 import 'package:airport_parking/presentation/splash/splash_event.dart';
 
 class GetConfigUseCase {

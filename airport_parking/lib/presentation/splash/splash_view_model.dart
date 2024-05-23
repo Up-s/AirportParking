@@ -12,12 +12,11 @@ class SplashViewModel with ChangeNotifier {
 
   Stream<SplashEvent> get eventStream => _eventController.stream;
 
-
   SplashViewModel(this.useCase) {
-    _fectchConfig();
+    _load();
   }
 
-  Future<void> _fectchConfig() async {
+  Future<void> _load() async {
     await Future.delayed(const Duration(milliseconds: 1500));
 
     PackageInfo packageInfo = await PackageInfo.fromPlatform();
@@ -31,7 +30,7 @@ class SplashViewModel with ChangeNotifier {
     String currentVersion = packageInfo.version;
     // print("currentVersion => ${currentVersion}");
 
-    final result = await useCase(currentVersion);
-    _eventController.add(result);
+    final resultConfig = await useCase(currentVersion);
+    _eventController.add(resultConfig);
   }
 }

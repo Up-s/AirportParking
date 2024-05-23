@@ -1,3 +1,4 @@
+import 'package:airport_parking/domain/model/store.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'splash_event.freezed.dart';
