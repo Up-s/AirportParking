@@ -1,7 +1,7 @@
 import 'package:airport_parking/domain/model/airport.dart';
 
 class AirportData {
-  List<Airport> airportList = [
+  final List<Airport> airportList = [
     Airport(
       en: 'GMP',
       ko: '김포국제공항',

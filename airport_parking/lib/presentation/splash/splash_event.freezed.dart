@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'splash_app_config_event.dart';
+part of 'splash_event.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 /// @nodoc
-mixin _$SplashAppConfigEvent {
+mixin _$SplashEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() isOpen,
@@ -75,17 +75,16 @@ mixin _$SplashAppConfigEvent {
 }
 
 /// @nodoc
-abstract class $SplashAppConfigEventCopyWith<$Res> {
-  factory $SplashAppConfigEventCopyWith(SplashAppConfigEvent value,
-          $Res Function(SplashAppConfigEvent) then) =
-      _$SplashAppConfigEventCopyWithImpl<$Res, SplashAppConfigEvent>;
+abstract class $SplashEventCopyWith<$Res> {
+  factory $SplashEventCopyWith(
+          SplashEvent value, $Res Function(SplashEvent) then) =
+      _$SplashEventCopyWithImpl<$Res, SplashEvent>;
 }
 
 /// @nodoc
-class _$SplashAppConfigEventCopyWithImpl<$Res,
-        $Val extends SplashAppConfigEvent>
-    implements $SplashAppConfigEventCopyWith<$Res> {
-  _$SplashAppConfigEventCopyWithImpl(this._value, this._then);
+class _$SplashEventCopyWithImpl<$Res, $Val extends SplashEvent>
+    implements $SplashEventCopyWith<$Res> {
+  _$SplashEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -102,7 +101,7 @@ abstract class _$$IsOpenImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$IsOpenImplCopyWithImpl<$Res>
-    extends _$SplashAppConfigEventCopyWithImpl<$Res, _$IsOpenImpl>
+    extends _$SplashEventCopyWithImpl<$Res, _$IsOpenImpl>
     implements _$$IsOpenImplCopyWith<$Res> {
   __$$IsOpenImplCopyWithImpl(
       _$IsOpenImpl _value, $Res Function(_$IsOpenImpl) _then)
@@ -116,7 +115,7 @@ class _$IsOpenImpl implements IsOpen {
 
   @override
   String toString() {
-    return 'SplashAppConfigEvent.isOpen()';
+    return 'SplashEvent.isOpen()';
   }
 
   @override
@@ -209,7 +208,7 @@ class _$IsOpenImpl implements IsOpen {
   }
 }
 
-abstract class IsOpen implements SplashAppConfigEvent {
+abstract class IsOpen implements SplashEvent {
   const factory IsOpen() = _$IsOpenImpl;
 }
 
@@ -222,7 +221,7 @@ abstract class _$$UpdateImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$UpdateImplCopyWithImpl<$Res>
-    extends _$SplashAppConfigEventCopyWithImpl<$Res, _$UpdateImpl>
+    extends _$SplashEventCopyWithImpl<$Res, _$UpdateImpl>
     implements _$$UpdateImplCopyWith<$Res> {
   __$$UpdateImplCopyWithImpl(
       _$UpdateImpl _value, $Res Function(_$UpdateImpl) _then)
@@ -236,7 +235,7 @@ class _$UpdateImpl implements Update {
 
   @override
   String toString() {
-    return 'SplashAppConfigEvent.update()';
+    return 'SplashEvent.update()';
   }
 
   @override
@@ -329,7 +328,7 @@ class _$UpdateImpl implements Update {
   }
 }
 
-abstract class Update implements SplashAppConfigEvent {
+abstract class Update implements SplashEvent {
   const factory Update() = _$UpdateImpl;
 }
 
@@ -342,7 +341,7 @@ abstract class _$$LaterImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$LaterImplCopyWithImpl<$Res>
-    extends _$SplashAppConfigEventCopyWithImpl<$Res, _$LaterImpl>
+    extends _$SplashEventCopyWithImpl<$Res, _$LaterImpl>
     implements _$$LaterImplCopyWith<$Res> {
   __$$LaterImplCopyWithImpl(
       _$LaterImpl _value, $Res Function(_$LaterImpl) _then)
@@ -356,7 +355,7 @@ class _$LaterImpl implements Later {
 
   @override
   String toString() {
-    return 'SplashAppConfigEvent.later()';
+    return 'SplashEvent.later()';
   }
 
   @override
@@ -449,7 +448,7 @@ class _$LaterImpl implements Later {
   }
 }
 
-abstract class Later implements SplashAppConfigEvent {
+abstract class Later implements SplashEvent {
   const factory Later() = _$LaterImpl;
 }
 
@@ -462,7 +461,7 @@ abstract class _$$PassImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$PassImplCopyWithImpl<$Res>
-    extends _$SplashAppConfigEventCopyWithImpl<$Res, _$PassImpl>
+    extends _$SplashEventCopyWithImpl<$Res, _$PassImpl>
     implements _$$PassImplCopyWith<$Res> {
   __$$PassImplCopyWithImpl(_$PassImpl _value, $Res Function(_$PassImpl) _then)
       : super(_value, _then);
@@ -475,7 +474,7 @@ class _$PassImpl implements Pass {
 
   @override
   String toString() {
-    return 'SplashAppConfigEvent.pass()';
+    return 'SplashEvent.pass()';
   }
 
   @override
@@ -568,7 +567,7 @@ class _$PassImpl implements Pass {
   }
 }
 
-abstract class Pass implements SplashAppConfigEvent {
+abstract class Pass implements SplashEvent {
   const factory Pass() = _$PassImpl;
 }
 
@@ -583,7 +582,7 @@ abstract class _$$ErrorImplCopyWith<$Res> {
 
 /// @nodoc
 class __$$ErrorImplCopyWithImpl<$Res>
-    extends _$SplashAppConfigEventCopyWithImpl<$Res, _$ErrorImpl>
+    extends _$SplashEventCopyWithImpl<$Res, _$ErrorImpl>
     implements _$$ErrorImplCopyWith<$Res> {
   __$$ErrorImplCopyWithImpl(
       _$ErrorImpl _value, $Res Function(_$ErrorImpl) _then)
@@ -613,7 +612,7 @@ class _$ErrorImpl implements Error {
 
   @override
   String toString() {
-    return 'SplashAppConfigEvent.error(e: $e)';
+    return 'SplashEvent.error(e: $e)';
   }
 
   @override
@@ -714,7 +713,7 @@ class _$ErrorImpl implements Error {
   }
 }
 
-abstract class Error implements SplashAppConfigEvent {
+abstract class Error implements SplashEvent {
   const factory Error(final String e) = _$ErrorImpl;
 
   String get e;

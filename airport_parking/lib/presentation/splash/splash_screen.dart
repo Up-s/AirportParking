@@ -22,6 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
     Future.microtask(() {
       final viewModel = context.read<SplashViewModel>();
+
       _streamSubscription = viewModel.eventStream.listen((event) {
         event.when(
           isOpen: () {
@@ -82,8 +83,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = context.watch<SplashViewModel>();
-
     return CupertinoPageScaffold(
       backgroundColor: CupertinoColors.black,
       child: SafeArea(
@@ -103,9 +102,12 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 
-  // This shows a CupertinoModalPopup which hosts a CupertinoAlertDialog.
-  void _showAlertDialog(BuildContext context, String title, String content,
-      List<CupertinoDialogAction> actions) {
+  void _showAlertDialog(
+    BuildContext context,
+    String title,
+    String content,
+    List<CupertinoDialogAction> actions,
+  ) {
     showCupertinoModalPopup<void>(
       context: context,
       builder: (BuildContext context) => CupertinoAlertDialog(

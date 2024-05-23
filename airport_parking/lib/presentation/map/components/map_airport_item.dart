@@ -1,5 +1,5 @@
 import 'package:airport_parking/domain/model/airport.dart';
-import 'package:airport_parking/util/hex_color.dart';
+import 'package:airport_parking/util/colors.dart';
 import 'package:flutter/material.dart';
 
 class MapAirportItem extends StatelessWidget {
@@ -15,13 +15,13 @@ class MapAirportItem extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
-        color: HexColor('#00FFFF'),
+        color: InColors.gray900,
       ),
       child: Center(
         child: Text(
           airport.ko,
-          style: const TextStyle(
-            color: Colors.black,
+          style: TextStyle(
+            color: InColors.main,
             fontSize: 34.0,
             fontWeight: FontWeight.bold,
           ),

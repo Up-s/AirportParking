@@ -6,10 +6,10 @@ class MapChangePageUseCase {
 
   MapChangePageUseCase(this.data);
 
-  void call(int index) {
-    final airport = data.airportList[index];
+  List<Airport> call(List<Airport> airportList, int index) {
+    final airport = airportList[index];
 
-    final newData = data.airportList.map(
+    final newData = airportList.map(
       (element) {
         return element.copyWith(
           opacity: element.en == airport.en ? 1 : 0,
@@ -17,6 +17,6 @@ class MapChangePageUseCase {
       },
     ).toList();
 
-    data.airportList = newData;
+    return newData;
   }
 }
