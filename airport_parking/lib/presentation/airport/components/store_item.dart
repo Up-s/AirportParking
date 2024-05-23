@@ -26,6 +26,7 @@ class StoreItem extends StatelessWidget {
             Expanded(
               child: Text(
                 store.title,
+                maxLines: 1,
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,

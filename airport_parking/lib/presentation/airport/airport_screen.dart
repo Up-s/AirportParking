@@ -135,7 +135,7 @@ class _AirportScreenState extends State<AirportScreen> {
             const SizedBox(height: 24),
             SizedBox(
               width: double.infinity,
-              height: 280,
+              height: 260,
               child: viewModel.openAirportList.isEmpty
                   ? Center(
                       child: SizedBox(
