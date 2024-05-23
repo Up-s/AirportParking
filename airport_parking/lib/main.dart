@@ -1,9 +1,9 @@
 import 'package:airport_parking/di/provider_setup.dart';
 import 'package:airport_parking/firebase_options.dart';
-import 'package:airport_parking/presentation/edit_airport/edit_store_screen.dart';
 import 'package:airport_parking/presentation/splash/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 
@@ -14,6 +14,13 @@ void main() async {
 
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarIconBrightness: Brightness.light,
+      statusBarBrightness: Brightness.dark,
+    ),
   );
 
   runApp(
@@ -31,6 +38,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const CupertinoApp(
+      debugShowCheckedModeBanner: false,
       // home: EditStoreScreen(),
       home: SplashScreen(),
     );

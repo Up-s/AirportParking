@@ -57,6 +57,7 @@ class _AirportScreenState extends State<AirportScreen> {
                       onPressed: () {
                         Navigator.pop(context);
                         _makePhoneCall(store.phone);
+                        viewModel.callTap(store);
                       },
                       child: const Text('전화걸기'),
                     ),
@@ -65,6 +66,7 @@ class _AirportScreenState extends State<AirportScreen> {
                       onPressed: () {
                         Navigator.pop(context);
                         _openWebsite(store.website);
+                        viewModel.websiteTap(store);
                       },
                       child: const Text('홈페이지'),
                     ),
@@ -120,7 +122,7 @@ class _AirportScreenState extends State<AirportScreen> {
       navigationBar: CupertinoNavigationBar(
         middle: Text(
           widget.airport.ko,
-          style: TextStyle(
+          style: const TextStyle(
             fontSize: 22,
             color: CupertinoColors.white,
           ),

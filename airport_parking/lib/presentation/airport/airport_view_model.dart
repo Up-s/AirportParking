@@ -5,6 +5,7 @@ import 'package:airport_parking/domain/model/open_airport.dart';
 import 'package:airport_parking/domain/model/store.dart';
 import 'package:airport_parking/domain/use_case/get_open_api_use_case.dart';
 import 'package:airport_parking/domain/use_case/get_store_use_case.dart';
+import 'package:airport_parking/domain/use_case/post_analytics_use_case.dart';
 import 'package:airport_parking/presentation/airport/airport_event.dart';
 import 'package:airport_parking/util/result.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +13,7 @@ import 'package:flutter/material.dart';
 class AirportViewModel with ChangeNotifier {
   final GetOpenApiUseCase openApiUseCase;
   final GetStoreUseCase storeUseCase;
+  final analyticsUseCase = PostAnalyticsUseCase();
 
   final _eventController = StreamController<AirportEvent>.broadcast();
 
@@ -20,10 +22,20 @@ class AirportViewModel with ChangeNotifier {
   List<OpenAirport> openAirportList = [];
   List<Store> storeList = [];
 
-  AirportViewModel(this.openApiUseCase, this.storeUseCase);
+  AirportViewModel(this.openApiUseCase, this.storeUseCase) {
+    analyticsUseCase.screen('AirportView');
+  }
 
   void onEvent(AirportEvent event) {
-    _eventController.add(event);
+    event.when(
+      storeTap: (store) {
+        analyticsUseCase.log('storeTap', {'title': store.title});
+        _eventController.add(AirportEvent.storeTap(store));
+      },
+      showAlert: (message) {
+        _eventController.add(AirportEvent.showAlert(message));
+      },
+    );
   }
 
   Future<void> load(Airport airport) async {
@@ -54,5 +66,13 @@ class AirportViewModel with ChangeNotifier {
     );
 
     notifyListeners();
+  }
+
+  void callTap(Store store) {
+    analyticsUseCase.log('callTap', {'title': store.title});
+  }
+
+  void websiteTap(Store store) {
+    analyticsUseCase.log('websiteTap', {'title': store.title});
   }
 }
