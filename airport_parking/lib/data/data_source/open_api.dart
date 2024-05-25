@@ -22,9 +22,15 @@ class OpenApi {
       Map<String, dynamic> tempResponse = jsonResponse['response'];
       Map<String, dynamic> body = tempResponse['body'];
       Map<String, dynamic> items = body['items'];
-      Iterable item = items['item'];
 
-      return Result.success(item.map((e) => OpenAirport.fromJson(e)).toList());
+      if (items['item'] is Iterable) {
+        Iterable item = items['item'];
+        return Result.success(
+            item.map((e) => OpenAirport.fromJson(e)).toList());
+      } else {
+        Map<String, dynamic> item = items['item'];
+        return Result.success([OpenAirport.fromJson(item)]);
+      }
     } catch (e) {
       return const Result.error('open api error');
     }

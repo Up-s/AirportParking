@@ -55,22 +55,27 @@ class AirportItem extends StatelessWidget {
           const SizedBox(height: 8),
           Text(
             openAirport.parkingAirportCodeName,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
             style: const TextStyle(
-              fontSize: 35,
+              fontSize: 28,
               color: Colors.white,
+              fontWeight: FontWeight.bold,
             ),
           ),
           const SizedBox(height: 16),
           Text(
             '전체/현재 : ${openAirport.parkingFullSpace}/${openAirport.parkingIstay} (${percent}%)',
+            maxLines: 1,
             style: const TextStyle(
-              fontSize: 18,
+              fontSize: 15,
               color: Colors.white,
             ),
           ),
           const SizedBox(height: 16),
           Text(
             conditionText,
+            maxLines: 1,
             style: TextStyle(
               fontSize: 34,
               color: conditionColor,
@@ -80,6 +85,7 @@ class AirportItem extends StatelessWidget {
           const SizedBox(height: 16),
           Text(
             '주차가능 : ${openAirport.parkingFullSpace - openAirport.parkingIstay}',
+            maxLines: 1,
             style: TextStyle(
               fontSize: 24,
               color: InColors.main,

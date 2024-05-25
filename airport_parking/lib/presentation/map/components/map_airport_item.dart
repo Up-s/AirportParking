@@ -20,6 +20,7 @@ class MapAirportItem extends StatelessWidget {
       child: Center(
         child: Text(
           airport.ko,
+          maxLines: 1,
           style: TextStyle(
             color: InColors.main,
             fontSize: 34.0,
