@@ -15,7 +15,7 @@ class SplashViewModel with ChangeNotifier {
   Stream<SplashEvent> get eventStream => _eventController.stream;
 
   SplashViewModel(this.useCase) {
-    analyticsUseCase.screen('SplashScreen');
+    analyticsUseCase.screen('splash_screen');
     _load();
   }
 

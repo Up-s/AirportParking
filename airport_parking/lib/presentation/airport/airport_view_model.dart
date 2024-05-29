@@ -23,13 +23,13 @@ class AirportViewModel with ChangeNotifier {
   List<Store> storeList = [];
 
   AirportViewModel(this.openApiUseCase, this.storeUseCase) {
-    analyticsUseCase.screen('AirportView');
+    analyticsUseCase.screen('airport_screen');
   }
 
   void onEvent(AirportEvent event) {
     event.when(
       storeTap: (store) {
-        analyticsUseCase.log('storeTap', {'title': store.title});
+        analyticsUseCase.log('store_${store.title}');
         _eventController.add(AirportEvent.storeTap(store));
       },
       showAlert: (message) {
@@ -69,10 +69,10 @@ class AirportViewModel with ChangeNotifier {
   }
 
   void callTap(Store store) {
-    analyticsUseCase.log('callTap', {'title': store.title});
+    analyticsUseCase.log('call_${store.title}');
   }
 
   void websiteTap(Store store) {
-    analyticsUseCase.log('websiteTap', {'title': store.title});
+    analyticsUseCase.log('websiteTap_${store.title}');
   }
 }

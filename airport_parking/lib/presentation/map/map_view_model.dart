@@ -17,7 +17,7 @@ class MapViewModel with ChangeNotifier {
   List<Airport> airportList = [];
 
   MapViewModel(this.pageUseCase) {
-    analyticsUseCase.screen('MapView');
+    analyticsUseCase.screen('map_screen');
     airportList = pageUseCase.data.airportList;
   }
 
@@ -34,7 +34,7 @@ class MapViewModel with ChangeNotifier {
   }
 
   Future<void> selectAirport(Airport airport) async {
-    analyticsUseCase.log('airportTap', {'title': airport.ko});
+    analyticsUseCase.log('airport_${airport.ko}');
     _eventController.add(MapEvent.selectAirport(airport));
   }
 }
