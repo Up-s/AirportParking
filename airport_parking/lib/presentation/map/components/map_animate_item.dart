@@ -18,22 +18,28 @@ class _MapAnimateItemState extends State<MapAnimateItem> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        AnimatedOpacity(
-          opacity: widget.airport.opacity,
-          duration: const Duration(milliseconds: 200),
-          child: Image.asset(
-            widget.airport.mapPath,
-            fit: BoxFit.contain,
+        AnimatedContainer(
+          duration: const Duration(milliseconds: 2000),
+          curve: Curves.fastOutSlowIn,
+          child: Transform.translate(
+            offset: Offset(0, widget.airport.isSelect ? -6.0 : 0.0),
+            child: AnimatedOpacity(
+              opacity: widget.airport.isSelect ? 1.0 : 0.0,
+              duration: const Duration(milliseconds: 200),
+              child: Image.asset(
+                widget.airport.mapPath,
+                fit: BoxFit.contain,
+              ),
+            ),
           ),
         ),
-        AnimatedOpacity(
-          opacity: widget.airport.opacity,
-          duration: const Duration(milliseconds: 500),
-          child: Image.asset(
-            widget.airport.airportPath,
-            fit: BoxFit.contain,
-          ),
-        )
+        Opacity(
+            opacity: widget.airport.isSelect ? 1.0 : 0.0,
+            child: Image.asset(
+              widget.airport.airportPath,
+              fit: BoxFit.contain,
+            ),
+        ),
       ],
     );
   }

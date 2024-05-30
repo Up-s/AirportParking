@@ -56,7 +56,6 @@ class _AirportScreenState extends State<AirportScreen> {
                       isDefaultAction: true,
                       onPressed: () {
                         Navigator.pop(context);
-                        _makePhoneCall(store.phone);
                         viewModel.callTap(store);
                       },
                       child: const Text('전화걸기'),
@@ -65,7 +64,6 @@ class _AirportScreenState extends State<AirportScreen> {
                       isDefaultAction: true,
                       onPressed: () {
                         Navigator.pop(context);
-                        _openWebsite(store.website);
                         viewModel.websiteTap(store);
                       },
                       child: const Text('홈페이지'),
@@ -173,22 +171,5 @@ class _AirportScreenState extends State<AirportScreen> {
         ),
       ),
     );
-  }
-
-  Future<void> _makePhoneCall(String phoneNumber) async {
-    final Uri launchUri = Uri(
-      scheme: 'tel',
-      path: phoneNumber,
-    );
-    if (await canLaunchUrl(launchUri)) {
-      await launchUrl(launchUri);
-    }
-  }
-
-  Future<void> _openWebsite(String url) async {
-    final Uri launchUri = Uri.parse(url);
-    if (await canLaunchUrl(launchUri)) {
-      await launchUrl(launchUri);
-    }
   }
 }

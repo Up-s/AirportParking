@@ -19,18 +19,21 @@ mixin _$MapEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int index) changePage,
+    required TResult Function(int index) likeAirport,
     required TResult Function(Airport airport) selectAirport,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int index)? changePage,
+    TResult? Function(int index)? likeAirport,
     TResult? Function(Airport airport)? selectAirport,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int index)? changePage,
+    TResult Function(int index)? likeAirport,
     TResult Function(Airport airport)? selectAirport,
     required TResult orElse(),
   }) =>
@@ -38,18 +41,21 @@ mixin _$MapEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ChangePage value) changePage,
+    required TResult Function(LikeAirport value) likeAirport,
     required TResult Function(SelectAirport value) selectAirport,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ChangePage value)? changePage,
+    TResult? Function(LikeAirport value)? likeAirport,
     TResult? Function(SelectAirport value)? selectAirport,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ChangePage value)? changePage,
+    TResult Function(LikeAirport value)? likeAirport,
     TResult Function(SelectAirport value)? selectAirport,
     required TResult orElse(),
   }) =>
@@ -138,6 +144,7 @@ class _$ChangePageImpl implements ChangePage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int index) changePage,
+    required TResult Function(int index) likeAirport,
     required TResult Function(Airport airport) selectAirport,
   }) {
     return changePage(index);
@@ -147,6 +154,7 @@ class _$ChangePageImpl implements ChangePage {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int index)? changePage,
+    TResult? Function(int index)? likeAirport,
     TResult? Function(Airport airport)? selectAirport,
   }) {
     return changePage?.call(index);
@@ -156,6 +164,7 @@ class _$ChangePageImpl implements ChangePage {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int index)? changePage,
+    TResult Function(int index)? likeAirport,
     TResult Function(Airport airport)? selectAirport,
     required TResult orElse(),
   }) {
@@ -169,6 +178,7 @@ class _$ChangePageImpl implements ChangePage {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ChangePage value) changePage,
+    required TResult Function(LikeAirport value) likeAirport,
     required TResult Function(SelectAirport value) selectAirport,
   }) {
     return changePage(this);
@@ -178,6 +188,7 @@ class _$ChangePageImpl implements ChangePage {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ChangePage value)? changePage,
+    TResult? Function(LikeAirport value)? likeAirport,
     TResult? Function(SelectAirport value)? selectAirport,
   }) {
     return changePage?.call(this);
@@ -187,6 +198,7 @@ class _$ChangePageImpl implements ChangePage {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ChangePage value)? changePage,
+    TResult Function(LikeAirport value)? likeAirport,
     TResult Function(SelectAirport value)? selectAirport,
     required TResult orElse(),
   }) {
@@ -203,6 +215,145 @@ abstract class ChangePage implements MapEvent {
   int get index;
   @JsonKey(ignore: true)
   _$$ChangePageImplCopyWith<_$ChangePageImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$LikeAirportImplCopyWith<$Res> {
+  factory _$$LikeAirportImplCopyWith(
+          _$LikeAirportImpl value, $Res Function(_$LikeAirportImpl) then) =
+      __$$LikeAirportImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int index});
+}
+
+/// @nodoc
+class __$$LikeAirportImplCopyWithImpl<$Res>
+    extends _$MapEventCopyWithImpl<$Res, _$LikeAirportImpl>
+    implements _$$LikeAirportImplCopyWith<$Res> {
+  __$$LikeAirportImplCopyWithImpl(
+      _$LikeAirportImpl _value, $Res Function(_$LikeAirportImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? index = null,
+  }) {
+    return _then(_$LikeAirportImpl(
+      null == index
+          ? _value.index
+          : index // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LikeAirportImpl implements LikeAirport {
+  const _$LikeAirportImpl(this.index);
+
+  @override
+  final int index;
+
+  @override
+  String toString() {
+    return 'MapEvent.likeAirport(index: $index)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$LikeAirportImpl &&
+            (identical(other.index, index) || other.index == index));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, index);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$LikeAirportImplCopyWith<_$LikeAirportImpl> get copyWith =>
+      __$$LikeAirportImplCopyWithImpl<_$LikeAirportImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(int index) changePage,
+    required TResult Function(int index) likeAirport,
+    required TResult Function(Airport airport) selectAirport,
+  }) {
+    return likeAirport(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(int index)? changePage,
+    TResult? Function(int index)? likeAirport,
+    TResult? Function(Airport airport)? selectAirport,
+  }) {
+    return likeAirport?.call(index);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(int index)? changePage,
+    TResult Function(int index)? likeAirport,
+    TResult Function(Airport airport)? selectAirport,
+    required TResult orElse(),
+  }) {
+    if (likeAirport != null) {
+      return likeAirport(index);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(ChangePage value) changePage,
+    required TResult Function(LikeAirport value) likeAirport,
+    required TResult Function(SelectAirport value) selectAirport,
+  }) {
+    return likeAirport(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(ChangePage value)? changePage,
+    TResult? Function(LikeAirport value)? likeAirport,
+    TResult? Function(SelectAirport value)? selectAirport,
+  }) {
+    return likeAirport?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(ChangePage value)? changePage,
+    TResult Function(LikeAirport value)? likeAirport,
+    TResult Function(SelectAirport value)? selectAirport,
+    required TResult orElse(),
+  }) {
+    if (likeAirport != null) {
+      return likeAirport(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LikeAirport implements MapEvent {
+  const factory LikeAirport(final int index) = _$LikeAirportImpl;
+
+  int get index;
+  @JsonKey(ignore: true)
+  _$$LikeAirportImplCopyWith<_$LikeAirportImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -281,6 +432,7 @@ class _$SelectAirportImpl implements SelectAirport {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(int index) changePage,
+    required TResult Function(int index) likeAirport,
     required TResult Function(Airport airport) selectAirport,
   }) {
     return selectAirport(airport);
@@ -290,6 +442,7 @@ class _$SelectAirportImpl implements SelectAirport {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(int index)? changePage,
+    TResult? Function(int index)? likeAirport,
     TResult? Function(Airport airport)? selectAirport,
   }) {
     return selectAirport?.call(airport);
@@ -299,6 +452,7 @@ class _$SelectAirportImpl implements SelectAirport {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(int index)? changePage,
+    TResult Function(int index)? likeAirport,
     TResult Function(Airport airport)? selectAirport,
     required TResult orElse(),
   }) {
@@ -312,6 +466,7 @@ class _$SelectAirportImpl implements SelectAirport {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(ChangePage value) changePage,
+    required TResult Function(LikeAirport value) likeAirport,
     required TResult Function(SelectAirport value) selectAirport,
   }) {
     return selectAirport(this);
@@ -321,6 +476,7 @@ class _$SelectAirportImpl implements SelectAirport {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(ChangePage value)? changePage,
+    TResult? Function(LikeAirport value)? likeAirport,
     TResult? Function(SelectAirport value)? selectAirport,
   }) {
     return selectAirport?.call(this);
@@ -330,6 +486,7 @@ class _$SelectAirportImpl implements SelectAirport {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(ChangePage value)? changePage,
+    TResult Function(LikeAirport value)? likeAirport,
     TResult Function(SelectAirport value)? selectAirport,
     required TResult orElse(),
   }) {

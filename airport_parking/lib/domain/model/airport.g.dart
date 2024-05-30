@@ -13,7 +13,7 @@ _$AirportImpl _$$AirportImplFromJson(Map<String, dynamic> json) =>
       homepage: json['homepage'] as String,
       mapPath: json['mapPath'] as String,
       airportPath: json['airportPath'] as String,
-      opacity: (json['opacity'] as num).toDouble(),
+      isSelect: json['isSelect'] as bool,
     );
 
 Map<String, dynamic> _$$AirportImplToJson(_$AirportImpl instance) =>
@@ -23,5 +23,5 @@ Map<String, dynamic> _$$AirportImplToJson(_$AirportImpl instance) =>
       'homepage': instance.homepage,
       'mapPath': instance.mapPath,
       'airportPath': instance.airportPath,
-      'opacity': instance.opacity,
+      'isSelect': instance.isSelect,
     };

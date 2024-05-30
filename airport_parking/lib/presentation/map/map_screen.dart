@@ -33,6 +33,7 @@ class _MapScreenState extends State<MapScreen> {
       _streamSubscription = viewModel.eventStream.listen((event) {
         event.when(
           changePage: (_) {},
+          likeAirport: (_) {},
           selectAirport: (airport) {
             Navigator.push(
               context,
@@ -76,7 +77,8 @@ class _MapScreenState extends State<MapScreen> {
                     fit: BoxFit.fill,
                   ),
                   ...List.generate(viewModel.airportList.length, (index) {
-                    return MapAnimateItem(airport: viewModel.airportList[index]);
+                    return MapAnimateItem(
+                        airport: viewModel.airportList[index]);
                   }),
                 ]),
               ),
@@ -95,8 +97,8 @@ class _MapScreenState extends State<MapScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 12.0),
                     child: GestureDetector(
                       onTap: () {
-                        viewModel.onEvent(
-                            MapEvent.selectAirport(viewModel.airportList[index]));
+                        viewModel.onEvent(MapEvent.selectAirport(
+                            viewModel.airportList[index]));
                       },
                       child: MapAirportItem(
                         airport: viewModel.airportList[index],
@@ -106,9 +108,7 @@ class _MapScreenState extends State<MapScreen> {
                 },
               ),
             ),
-            const SizedBox(
-              height: 88,
-            ),
+            const SizedBox(height: 88),
           ],
         ),
       ),
