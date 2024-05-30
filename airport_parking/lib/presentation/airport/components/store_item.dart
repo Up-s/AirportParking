@@ -19,7 +19,7 @@ class StoreItem extends StatelessWidget {
         padding: const EdgeInsets.only(top: 10, left: 24, right: 24, bottom: 10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          color: InColors.gray800,
+          color: InColors.gray900,
         ),
         child: Row(
           children: [
