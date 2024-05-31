@@ -65,7 +65,7 @@ class AirportItem extends StatelessWidget {
           ),
           const SizedBox(height: 16),
           Text(
-            '전체/현재 : ${openAirport.parkingFullSpace}/${openAirport.parkingIstay} (${percent}%)',
+            '현재/전체 : ${openAirport.parkingIstay}/${openAirport.parkingFullSpace} (${percent}%)',
             maxLines: 1,
             style: const TextStyle(
               fontSize: 15,

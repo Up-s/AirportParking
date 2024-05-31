@@ -12,7 +12,7 @@ class Airport with _$Airport {
     required String homepage,
     required String mapPath,
     required String airportPath,
-    required double opacity,
+    required bool isSelect,
   }) = _Airport;
 
   factory Airport.fromJson(Map<String, Object?> json) => _$AirportFromJson(json);

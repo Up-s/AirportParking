@@ -5,7 +5,9 @@ import 'package:airport_parking/presentation/airport/airport_event.dart';
 import 'package:airport_parking/presentation/airport/airport_view_model.dart';
 import 'package:airport_parking/presentation/airport/components/airport_item.dart';
 import 'package:airport_parking/presentation/airport/components/store_item.dart';
+import 'package:airport_parking/util/colors.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -45,10 +47,10 @@ class _AirportScreenState extends State<AirportScreen> {
                 return CupertinoActionSheet(
                   title: Text(
                     store.title,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: CupertinoColors.systemBackground,
+                      color: InColors.gray900,
                     ),
                   ),
                   actions: <CupertinoActionSheetAction>[
@@ -56,7 +58,6 @@ class _AirportScreenState extends State<AirportScreen> {
                       isDefaultAction: true,
                       onPressed: () {
                         Navigator.pop(context);
-                        _makePhoneCall(store.phone);
                         viewModel.callTap(store);
                       },
                       child: const Text('전화걸기'),
@@ -65,7 +66,6 @@ class _AirportScreenState extends State<AirportScreen> {
                       isDefaultAction: true,
                       onPressed: () {
                         Navigator.pop(context);
-                        _openWebsite(store.website);
                         viewModel.websiteTap(store);
                       },
                       child: const Text('홈페이지'),
@@ -157,7 +157,47 @@ class _AirportScreenState extends State<AirportScreen> {
                       },
                     ),
             ),
-            const SizedBox(height: 32),
+            const SizedBox(height: 16.0),
+            Padding(
+              padding: const EdgeInsets.only(
+                top: 4.0,
+                left: 16.0,
+                right: 16.0,
+                bottom: 6.0,
+              ),
+              child: Container(
+                alignment: Alignment.centerLeft,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: 1.0,
+                        child: Divider(color: InColors.gray700),
+                      ),
+                    ),
+                    const SizedBox(width: 16.0),
+                    const Text(
+                      '외부 주차장',
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: CupertinoColors.white,
+                      ),
+                    ),
+                    const SizedBox(width: 16.0),
+                    Expanded(
+                      flex: 5,
+                      child: SizedBox(
+                        width: double.infinity,
+                        height: 1.0,
+                        child: Divider(color: InColors.gray700),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            const SizedBox(height: 8.0),
             Expanded(
               child: ListView(
                   children: viewModel.storeList.map((store) {
@@ -173,22 +213,5 @@ class _AirportScreenState extends State<AirportScreen> {
         ),
       ),
     );
-  }
-
-  Future<void> _makePhoneCall(String phoneNumber) async {
-    final Uri launchUri = Uri(
-      scheme: 'tel',
-      path: phoneNumber,
-    );
-    if (await canLaunchUrl(launchUri)) {
-      await launchUrl(launchUri);
-    }
-  }
-
-  Future<void> _openWebsite(String url) async {
-    final Uri launchUri = Uri.parse(url);
-    if (await canLaunchUrl(launchUri)) {
-      await launchUrl(launchUri);
-    }
   }
 }

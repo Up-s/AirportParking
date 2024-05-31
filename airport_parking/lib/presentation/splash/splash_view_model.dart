@@ -8,14 +8,17 @@ import 'package:package_info_plus/package_info_plus.dart';
 
 class SplashViewModel with ChangeNotifier {
   final GetConfigUseCase useCase;
-  final analyticsUseCase = PostAnalyticsUseCase();
+  final PostAnalyticsUseCase analyticsUseCase;
 
   final _eventController = StreamController<SplashEvent>.broadcast();
 
   Stream<SplashEvent> get eventStream => _eventController.stream;
 
-  SplashViewModel(this.useCase) {
-    analyticsUseCase.screen('SplashScreen');
+  SplashViewModel(
+    this.useCase,
+    this.analyticsUseCase,
+  ) {
+    analyticsUseCase.screen('splash_screen');
     _load();
   }
 

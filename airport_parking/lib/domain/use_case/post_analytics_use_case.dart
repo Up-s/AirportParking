@@ -7,10 +7,7 @@ class PostAnalyticsUseCase {
     await _analytics.logScreenView(screenClass: screen);
   }
 
-  Future<void> log(String name, Map<String, dynamic> parameters) async {
-    await _analytics.logEvent(
-      name: name,
-      parameters: parameters,
-    );
+  Future<void> log(String name) async {
+    await _analytics.logEvent(name: name);
   }
 }

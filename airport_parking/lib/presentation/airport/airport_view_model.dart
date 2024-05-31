@@ -9,11 +9,12 @@ import 'package:airport_parking/domain/use_case/post_analytics_use_case.dart';
 import 'package:airport_parking/presentation/airport/airport_event.dart';
 import 'package:airport_parking/util/result.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AirportViewModel with ChangeNotifier {
   final GetOpenApiUseCase openApiUseCase;
   final GetStoreUseCase storeUseCase;
-  final analyticsUseCase = PostAnalyticsUseCase();
+  final PostAnalyticsUseCase analyticsUseCase;
 
   final _eventController = StreamController<AirportEvent>.broadcast();
 
@@ -22,14 +23,18 @@ class AirportViewModel with ChangeNotifier {
   List<OpenAirport> openAirportList = [];
   List<Store> storeList = [];
 
-  AirportViewModel(this.openApiUseCase, this.storeUseCase) {
-    analyticsUseCase.screen('AirportView');
+  AirportViewModel(
+    this.openApiUseCase,
+    this.storeUseCase,
+    this.analyticsUseCase,
+  ) {
+    analyticsUseCase.screen('airport_screen');
   }
 
   void onEvent(AirportEvent event) {
     event.when(
       storeTap: (store) {
-        analyticsUseCase.log('storeTap', {'title': store.title});
+        analyticsUseCase.log('store_${store.title}');
         _eventController.add(AirportEvent.storeTap(store));
       },
       showAlert: (message) {
@@ -69,10 +74,30 @@ class AirportViewModel with ChangeNotifier {
   }
 
   void callTap(Store store) {
-    analyticsUseCase.log('callTap', {'title': store.title});
+    analyticsUseCase.log('call_${store.title}');
+    _callPhone(store.phone);
   }
 
   void websiteTap(Store store) {
-    analyticsUseCase.log('websiteTap', {'title': store.title});
+    analyticsUseCase.log('websiteTap_${store.title}');
+    _openWebsite(store.website);
+  }
+
+
+  Future<void> _callPhone(String phoneNumber) async {
+    final Uri launchUri = Uri(
+      scheme: 'tel',
+      path: phoneNumber,
+    );
+    if (await canLaunchUrl(launchUri)) {
+      await launchUrl(launchUri);
+    }
+  }
+
+  Future<void> _openWebsite(String url) async {
+    final Uri launchUri = Uri.parse(url);
+    if (await canLaunchUrl(launchUri)) {
+      await launchUrl(launchUri);
+    }
   }
 }

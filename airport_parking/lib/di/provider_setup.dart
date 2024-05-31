@@ -8,12 +8,14 @@ import 'package:airport_parking/domain/repository/open_api_repository.dart';
 import 'package:airport_parking/domain/use_case/get_config_use_case.dart';
 import 'package:airport_parking/domain/use_case/get_open_api_use_case.dart';
 import 'package:airport_parking/domain/use_case/get_store_use_case.dart';
-import 'package:airport_parking/domain/use_case/map_change_page_use_case.dart';
+import 'package:airport_parking/domain/use_case/airport_list_use_case.dart';
+import 'package:airport_parking/domain/use_case/post_analytics_use_case.dart';
 import 'package:airport_parking/domain/use_case/post_store_use_case.dart';
 import 'package:airport_parking/presentation/airport/airport_view_model.dart';
 import 'package:airport_parking/presentation/edit_airport/edit_store_view_model.dart';
 import 'package:airport_parking/presentation/map/map_view_model.dart';
 import 'package:airport_parking/presentation/splash/splash_view_model.dart';
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:http/http.dart' as http;
@@ -36,6 +38,9 @@ List<SingleChildWidget> independentModels = [
   Provider<http.Client>(
     create: (context) => http.Client(),
   ),
+  Provider<PostAnalyticsUseCase>(
+    create: (context) => PostAnalyticsUseCase(),
+  ),
 ];
 
 // 3. 2번에 의존성 있는 객체
@@ -49,8 +54,8 @@ List<SingleChildWidget> dependentModels = [
   ProxyProvider<FirebaseRepository, GetStoreUseCase>(
     update: (context, repository, _) => GetStoreUseCase(repository),
   ),
-  ProxyProvider<AirportData, MapChangePageUseCase>(
-    update: (context, data, _) => MapChangePageUseCase(data),
+  ProxyProvider<AirportData, AirportListUseCase>(
+    update: (context, data, _) => AirportListUseCase(data),
   ),
   ProxyProvider<http.Client, OpenApi>(
     update: (context, client, _) => OpenApi(client),
@@ -69,15 +74,22 @@ List<SingleChildWidget> dependentModels = [
 // 4. ViewModels
 List<SingleChildWidget> viewModels = [
   ChangeNotifierProvider<SplashViewModel>(
-    create: (context) => SplashViewModel(context.read<GetConfigUseCase>()),
+    create: (context) => SplashViewModel(
+      context.read<GetConfigUseCase>(),
+      context.read<PostAnalyticsUseCase>(),
+    ),
   ),
   ChangeNotifierProvider<MapViewModel>(
-    create: (context) => MapViewModel(context.read<MapChangePageUseCase>()),
+    create: (context) => MapViewModel(
+      context.read<AirportListUseCase>(),
+      context.read<PostAnalyticsUseCase>(),
+    ),
   ),
   ChangeNotifierProvider<AirportViewModel>(
     create: (context) => AirportViewModel(
       context.read<GetOpenApiUseCase>(),
       context.read<GetStoreUseCase>(),
+      context.read<PostAnalyticsUseCase>(),
     ),
   ),
   ChangeNotifierProvider<EditStoreViewModel>(

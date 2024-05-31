@@ -25,7 +25,7 @@ mixin _$Airport {
   String get homepage => throw _privateConstructorUsedError;
   String get mapPath => throw _privateConstructorUsedError;
   String get airportPath => throw _privateConstructorUsedError;
-  double get opacity => throw _privateConstructorUsedError;
+  bool get isSelect => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -43,7 +43,7 @@ abstract class $AirportCopyWith<$Res> {
       String homepage,
       String mapPath,
       String airportPath,
-      double opacity});
+      bool isSelect});
 }
 
 /// @nodoc
@@ -64,7 +64,7 @@ class _$AirportCopyWithImpl<$Res, $Val extends Airport>
     Object? homepage = null,
     Object? mapPath = null,
     Object? airportPath = null,
-    Object? opacity = null,
+    Object? isSelect = null,
   }) {
     return _then(_value.copyWith(
       en: null == en
@@ -87,10 +87,10 @@ class _$AirportCopyWithImpl<$Res, $Val extends Airport>
           ? _value.airportPath
           : airportPath // ignore: cast_nullable_to_non_nullable
               as String,
-      opacity: null == opacity
-          ? _value.opacity
-          : opacity // ignore: cast_nullable_to_non_nullable
-              as double,
+      isSelect: null == isSelect
+          ? _value.isSelect
+          : isSelect // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -108,7 +108,7 @@ abstract class _$$AirportImplCopyWith<$Res> implements $AirportCopyWith<$Res> {
       String homepage,
       String mapPath,
       String airportPath,
-      double opacity});
+      bool isSelect});
 }
 
 /// @nodoc
@@ -127,7 +127,7 @@ class __$$AirportImplCopyWithImpl<$Res>
     Object? homepage = null,
     Object? mapPath = null,
     Object? airportPath = null,
-    Object? opacity = null,
+    Object? isSelect = null,
   }) {
     return _then(_$AirportImpl(
       en: null == en
@@ -150,10 +150,10 @@ class __$$AirportImplCopyWithImpl<$Res>
           ? _value.airportPath
           : airportPath // ignore: cast_nullable_to_non_nullable
               as String,
-      opacity: null == opacity
-          ? _value.opacity
-          : opacity // ignore: cast_nullable_to_non_nullable
-              as double,
+      isSelect: null == isSelect
+          ? _value.isSelect
+          : isSelect // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -167,7 +167,7 @@ class _$AirportImpl implements _Airport {
       required this.homepage,
       required this.mapPath,
       required this.airportPath,
-      required this.opacity});
+      required this.isSelect});
 
   factory _$AirportImpl.fromJson(Map<String, dynamic> json) =>
       _$$AirportImplFromJson(json);
@@ -183,11 +183,11 @@ class _$AirportImpl implements _Airport {
   @override
   final String airportPath;
   @override
-  final double opacity;
+  final bool isSelect;
 
   @override
   String toString() {
-    return 'Airport(en: $en, ko: $ko, homepage: $homepage, mapPath: $mapPath, airportPath: $airportPath, opacity: $opacity)';
+    return 'Airport(en: $en, ko: $ko, homepage: $homepage, mapPath: $mapPath, airportPath: $airportPath, isSelect: $isSelect)';
   }
 
   @override
@@ -202,13 +202,14 @@ class _$AirportImpl implements _Airport {
             (identical(other.mapPath, mapPath) || other.mapPath == mapPath) &&
             (identical(other.airportPath, airportPath) ||
                 other.airportPath == airportPath) &&
-            (identical(other.opacity, opacity) || other.opacity == opacity));
+            (identical(other.isSelect, isSelect) ||
+                other.isSelect == isSelect));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, en, ko, homepage, mapPath, airportPath, opacity);
+  int get hashCode => Object.hash(
+      runtimeType, en, ko, homepage, mapPath, airportPath, isSelect);
 
   @JsonKey(ignore: true)
   @override
@@ -231,7 +232,7 @@ abstract class _Airport implements Airport {
       required final String homepage,
       required final String mapPath,
       required final String airportPath,
-      required final double opacity}) = _$AirportImpl;
+      required final bool isSelect}) = _$AirportImpl;
 
   factory _Airport.fromJson(Map<String, dynamic> json) = _$AirportImpl.fromJson;
 
@@ -246,7 +247,7 @@ abstract class _Airport implements Airport {
   @override
   String get airportPath;
   @override
-  double get opacity;
+  bool get isSelect;
   @override
   @JsonKey(ignore: true)
   _$$AirportImplCopyWith<_$AirportImpl> get copyWith =>
